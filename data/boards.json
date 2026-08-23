@@ -2,100 +2,131 @@
   {
     "id": "dinajpur-ssc-2026",
     "name": "Dinajpur Board",
+    "name_bn": "দিনাজপুর শিক্ষা বোর্ড",
     "exam": "ssc",
     "year": "2026",
     "url": "https://ssc26-dinajpur.hscstack.site/",
     "status": "available",
-    "icon": "🏛️"
+    "icon": "landmark"
   },
   {
     "id": "dhaka-ssc-2026",
     "name": "Dhaka Board",
+    "name_bn": "ঢাকা শিক্ষা বোর্ড",
     "exam": "ssc",
     "year": "2026",
     "url": "#",
     "status": "coming_soon",
-    "icon": "🏛️"
+    "icon": "landmark"
   },
   {
     "id": "rajshahi-ssc-2026",
     "name": "Rajshahi Board",
+    "name_bn": "রাজশাহী শিক্ষা বোর্ড",
     "exam": "ssc",
     "year": "2026",
     "url": "#",
     "status": "coming_soon",
-    "icon": "🏛️"
+    "icon": "landmark"
   },
   {
     "id": "cumilla-ssc-2026",
     "name": "Cumilla Board",
+    "name_bn": "কুমিল্লা শিক্ষা বোর্ড",
     "exam": "ssc",
     "year": "2026",
     "url": "#",
     "status": "coming_soon",
-    "icon": "🏛️"
+    "icon": "landmark"
   },
   {
     "id": "jashore-ssc-2026",
     "name": "Jashore Board",
+    "name_bn": "যশোর শিক্ষা বোর্ড",
     "exam": "ssc",
     "year": "2026",
     "url": "#",
     "status": "coming_soon",
-    "icon": "🏛️"
+    "icon": "landmark"
   },
   {
     "id": "chattogram-ssc-2026",
     "name": "Chattogram Board",
+    "name_bn": "চট্টগ্রাম শিক্ষা বোর্ড",
     "exam": "ssc",
     "year": "2026",
     "url": "#",
     "status": "coming_soon",
-    "icon": "🏛️"
+    "icon": "landmark"
   },
   {
     "id": "barishal-ssc-2026",
     "name": "Barishal Board",
+    "name_bn": "বরিশাল শিক্ষা বোর্ড",
     "exam": "ssc",
     "year": "2026",
     "url": "#",
     "status": "coming_soon",
-    "icon": "🏛️"
+    "icon": "landmark"
   },
   {
     "id": "sylhet-ssc-2026",
     "name": "Sylhet Board",
+    "name_bn": "সিলেট শিক্ষা বোর্ড",
     "exam": "ssc",
     "year": "2026",
     "url": "#",
     "status": "coming_soon",
-    "icon": "🏛️"
+    "icon": "landmark"
   },
   {
     "id": "mymensingh-ssc-2026",
     "name": "Mymensingh Board",
+    "name_bn": "ময়মনসিংহ শিক্ষা বোর্ড",
     "exam": "ssc",
     "year": "2026",
     "url": "#",
     "status": "coming_soon",
-    "icon": "🏛️"
+    "icon": "landmark"
+  },
+  {
+    "id": "madrasah-ssc-2026",
+    "name": "Madrasah Board",
+    "name_bn": "মাদ্রাসা শিক্ষা বোর্ড",
+    "exam": "ssc",
+    "year": "2026",
+    "url": "#",
+    "status": "coming_soon",
+    "icon": "book-open"
+  },
+  {
+    "id": "technical-ssc-2026",
+    "name": "Technical Board",
+    "name_bn": "কারিগরি শিক্ষা বোর্ড",
+    "exam": "ssc",
+    "year": "2026",
+    "url": "#",
+    "status": "coming_soon",
+    "icon": "cpu"
   },
   {
     "id": "dinajpur-ssc-2025",
     "name": "Dinajpur Board",
+    "name_bn": "দিনাজপুর শিক্ষা বোর্ড",
     "exam": "ssc",
     "year": "2025",
     "url": "#",
     "status": "coming_soon",
-    "icon": "🏛️"
+    "icon": "landmark"
   },
   {
     "id": "dinajpur-hsc-2026",
     "name": "Dinajpur Board",
+    "name_bn": "দিনাজপুর শিক্ষা বোর্ড",
     "exam": "hsc",
     "year": "2026",
     "url": "#",
     "status": "coming_soon",
-    "icon": "🏛️"
+    "icon": "landmark"
   }
 ]

@@ -11,25 +11,40 @@ document.addEventListener('DOMContentLoaded', () => {
     const examFilter = document.getElementById('examFilter');
     const yearFilter = document.getElementById('yearFilter');
     const boardFilter = document.getElementById('boardFilter');
+    const viewMoreContainer = document.getElementById('viewMoreContainer');
+    const viewMoreBtn = document.getElementById('viewMoreBtn');
+    const viewMoreText = document.getElementById('viewMoreText');
+    const viewMoreIcon = document.getElementById('viewMoreIcon');
     
+    let isExpanded = false;
     let boardsData = [];
+
+    // Helper to get limit: 3 for phones (<640px), 6 for tablet/desktop
+    const getInitialLimit = () => (window.innerWidth < 640 ? 3 : 6);
 
     // Fetch boards data
     fetch('data/boards.json')
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
+        })
         .then(data => {
             boardsData = data;
             renderBoards();
         })
         .catch(error => {
             console.error('Error loading boards data:', error);
-            boardsGrid.innerHTML = '<div class="col-span-full text-center text-red-500 py-8">Failed to load boards data. Please try again later.</div>';
+            if (boardsGrid) {
+                boardsGrid.innerHTML = '<div class="col-span-full text-center text-red-500 py-8 bg-white rounded-xl border border-red-200">Failed to load boards data. Please try again later.</div>';
+            }
         });
 
     function renderBoards() {
-        const selectedExam = examFilter.value;
-        const selectedYear = yearFilter.value;
-        const selectedBoard = boardFilter.value;
+        if (!boardsGrid) return;
+
+        const selectedExam = examFilter ? examFilter.value : 'all';
+        const selectedYear = yearFilter ? yearFilter.value : 'all';
+        const selectedBoard = boardFilter ? boardFilter.value : 'all';
 
         const filteredBoards = boardsData.filter(board => {
             const matchExam = selectedExam === 'all' || board.exam === selectedExam;
@@ -42,42 +57,107 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (filteredBoards.length === 0) {
             boardsGrid.classList.add('hidden');
-            noResults.classList.remove('hidden');
+            if (noResults) noResults.classList.remove('hidden');
+            if (viewMoreContainer) viewMoreContainer.classList.add('hidden');
             return;
         }
 
         boardsGrid.classList.remove('hidden');
-        noResults.classList.add('hidden');
+        if (noResults) noResults.classList.add('hidden');
 
-        filteredBoards.forEach(board => {
+        // Dynamic pagination: 3 for phone (<640px), 6 for larger screens
+        const initialLimit = getInitialLimit();
+        const hasMore = filteredBoards.length > initialLimit;
+        const visibleBoards = (hasMore && !isExpanded) ? filteredBoards.slice(0, initialLimit) : filteredBoards;
+
+        if (viewMoreContainer) {
+            if (hasMore) {
+                viewMoreContainer.classList.remove('hidden');
+                if (viewMoreText) {
+                    viewMoreText.textContent = isExpanded ? 'Show Less' : `View More Boards (${filteredBoards.length - initialLimit} more)`;
+                }
+                if (viewMoreIcon) {
+                    viewMoreIcon.style.transform = isExpanded ? 'rotate(180deg)' : 'rotate(0deg)';
+                }
+            } else {
+                viewMoreContainer.classList.add('hidden');
+            }
+        }
+
+        visibleBoards.forEach((board, index) => {
             const isAvailable = board.status === 'available';
+            const banglaName = board.name_bn || '';
+            const examLabel = (board.exam || '').toUpperCase();
+            const yearLabel = board.year || '';
+            const iconName = board.icon || 'landmark';
+            const staggerDelay = Math.min(index * 40, 300);
             
             const card = document.createElement('div');
             
             if (isAvailable) {
                 card.innerHTML = `
-                    <a href="${board.url}" class="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:shadow-indigo-100/50 hover:border-indigo-500 transition-all duration-300 p-8 flex flex-col items-center text-center h-full relative overflow-hidden">
-                        <div class="absolute top-0 w-full h-1 bg-indigo-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
-                        <div class="w-20 h-20 rounded-2xl bg-indigo-50 flex items-center justify-center mb-6 group-hover:-translate-y-2 transition-transform duration-300">
-                            <span class="text-4xl">${board.icon}</span>
+                    <div style="animation-delay: ${staggerDelay}ms;" class="board-card-animate group bg-white rounded-xl border border-slate-200 hover:border-indigo-500 hover:shadow-lg hover:-translate-y-1 p-5 flex flex-col justify-between transition-all duration-200">
+                        <div>
+                            <div class="flex items-center justify-between gap-2">
+                                <div class="w-10 h-10 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 shrink-0 group-hover:scale-105 transition-transform duration-200">
+                                    <i data-lucide="${iconName}" class="w-5 h-5"></i>
+                                </div>
+                                <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200/70 px-2.5 py-0.5 rounded-full">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                    Live
+                                </span>
+                            </div>
+
+                            <h3 class="text-base sm:text-lg font-bold text-slate-900 group-hover:text-indigo-600 transition-colors mt-3.5 mb-0.5">
+                                ${board.name}
+                            </h3>
+                            ${banglaName ? `<p class="font-bengali text-xs text-slate-500">${banglaName}</p>` : ''}
+                            
+                            <div class="mt-3">
+                                <span class="text-xs font-semibold text-indigo-700 bg-indigo-50 border border-indigo-100 px-2 py-0.5 rounded-md">
+                                    ${examLabel} ${yearLabel}
+                                </span>
+                            </div>
                         </div>
-                        <h3 class="text-2xl font-black text-slate-900 mb-2 group-hover:text-indigo-600 transition-colors">${board.name}</h3>
-                        <p class="text-sm font-semibold text-indigo-600/80 bg-indigo-50 px-3 py-1 rounded-full mb-6">${board.exam.toUpperCase()} ${board.year}</p>
-                        <span class="mt-auto inline-flex items-center text-slate-600 font-bold group-hover:text-indigo-600 transition-colors">
-                            View Leaderboard
-                            <i data-lucide="arrow-right" class="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform"></i>
-                        </span>
-                    </a>
+
+                        <div class="pt-4 mt-3 border-t border-slate-100">
+                            <a href="${board.url}" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-1.5 bg-indigo-600 hover:bg-indigo-700 active:scale-[0.98] text-white text-xs sm:text-sm font-semibold px-3.5 py-2.5 rounded-lg shadow-sm transition-all duration-150">
+                                <span>View Leaderboard</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5"></i>
+                            </a>
+                        </div>
+                    </div>
                 `;
             } else {
                 card.innerHTML = `
-                    <div class="relative bg-slate-50 rounded-2xl border border-slate-200 p-8 flex flex-col items-center text-center h-full overflow-hidden">
-                        <div class="absolute top-4 right-4 bg-white border border-slate-200 text-slate-500 text-xs px-2.5 py-1 rounded-full font-bold shadow-sm">Coming Soon</div>
-                        <div class="w-20 h-20 rounded-2xl bg-white border border-slate-200 flex items-center justify-center mb-6 opacity-60">
-                            <span class="text-4xl grayscale">${board.icon}</span>
+                    <div style="animation-delay: ${staggerDelay}ms;" class="board-card-animate bg-white rounded-xl border border-slate-200/80 p-5 flex flex-col justify-between opacity-80 hover:opacity-100 hover:border-slate-300 hover:-translate-y-0.5 transition-all duration-200">
+                        <div>
+                            <div class="flex items-center justify-between gap-2">
+                                <div class="w-10 h-10 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-400 shrink-0">
+                                    <i data-lucide="${iconName}" class="w-5 h-5"></i>
+                                </div>
+                                <span class="text-xs font-medium text-slate-500 bg-slate-100 border border-slate-200/60 px-2.5 py-0.5 rounded-full">
+                                    Coming Soon
+                                </span>
+                            </div>
+
+                            <h3 class="text-base sm:text-lg font-semibold text-slate-700 mt-3.5 mb-0.5">
+                                ${board.name}
+                            </h3>
+                            ${banglaName ? `<p class="font-bengali text-xs text-slate-400">${banglaName}</p>` : ''}
+
+                            <div class="mt-3">
+                                <span class="text-xs font-medium text-slate-400 bg-slate-100 px-2 py-0.5 rounded-md">
+                                    ${examLabel} ${yearLabel}
+                                </span>
+                            </div>
                         </div>
-                        <h3 class="text-2xl font-bold text-slate-400 mb-2">${board.name}</h3>
-                        <p class="text-sm font-semibold text-slate-400 bg-white border border-slate-200 px-3 py-1 rounded-full">${board.exam.toUpperCase()} ${board.year}</p>
+
+                        <div class="pt-4 mt-3 border-t border-slate-100">
+                            <div class="w-full inline-flex items-center justify-center text-slate-400 text-xs font-medium py-2 rounded-lg bg-slate-50 border border-slate-100 cursor-default">
+                                Upcoming
+                            </div>
+                        </div>
                     </div>
                 `;
             }
@@ -85,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
             boardsGrid.appendChild(card.firstElementChild);
         });
         
-        // Timeout to ensure DOM is fully updated before lucide scans it
+        // Refresh icons after DOM update
         setTimeout(() => {
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
@@ -93,7 +173,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 10);
     }
 
-    examFilter.addEventListener('change', renderBoards);
-    yearFilter.addEventListener('change', renderBoards);
-    boardFilter.addEventListener('change', renderBoards);
+    // Filter change resets expanded state and re-renders
+    const handleFilterChange = () => {
+        isExpanded = false;
+        renderBoards();
+    };
+
+    if (examFilter) examFilter.addEventListener('change', handleFilterChange);
+    if (yearFilter) yearFilter.addEventListener('change', handleFilterChange);
+    if (boardFilter) boardFilter.addEventListener('change', handleFilterChange);
+
+    // View More click handler
+    if (viewMoreBtn) {
+        viewMoreBtn.addEventListener('click', () => {
+            isExpanded = !isExpanded;
+            renderBoards();
+        });
+    }
+
+    // Window resize handler
+    window.addEventListener('resize', () => {
+        if (!isExpanded) {
+            renderBoards();
+        }
+    });
 });
