@@ -1,393 +1,551 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ResultStack — Student Leaderboards for Bangladesh</title>
-  <meta name="description" content="ResultStack is an upcoming HSCStack platform for exploring SSC and HSC student leaderboards across Bangladesh.">
-  <meta name="theme-color" content="#000000">
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>ResultRank | Bangladesh Education Boards Result Leaderboards</title>
+    
+    <!-- SEO & Metadata -->
+    <meta
+      name="description"
+      content="ResultRank by HSCStack - The ultimate leaderboard portal to explore top students, institutions, and detailed GPA statistics across all Bangladesh Education Boards."
+    />
+    <meta
+      name="keywords"
+      content="Bangladesh Education Boards, SSC Result 2026, HSC Result 2026, Result Leaderboard, ResultRank, Dinajpur Board, Dhaka Board, HSCStack, GPA 5, Merit List, Board Results"
+    />
+    <meta name="author" content="HSCStack" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="theme-color" content="#4f46e5" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="ResultRank" />
 
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="ResultStack — Student Leaderboards for Bangladesh">
-  <meta property="og:description" content="ResultStack is an upcoming HSCStack platform for exploring SSC and HSC student leaderboards across Bangladesh.">
-  <meta property="og:image" content="assets/og-image.png">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ResultRank by HSCStack" />
+    <meta property="og:title" content="ResultRank | Bangladesh Education Boards Result Leaderboards" />
+    <meta
+      property="og:description"
+      content="Explore merit leaderboards, top institutions, and detailed GPA statistics across all Bangladesh Education Boards."
+    />
+    <meta property="og:image" content="https://cdn.hscstack.site/images/og_resultrank.png" />
+    <meta property="og:image:secure_url" content="https://cdn.hscstack.site/images/og_resultrank.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="ResultRank by HSCStack - Bangladesh Education Boards Result Leaderboards" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="bn_BD" />
 
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ResultRank | Bangladesh Education Boards Result Leaderboards" />
+    <meta
+      name="twitter:description"
+      content="Explore merit leaderboards, top institutions, and detailed GPA statistics across all Bangladesh Education Boards."
+    />
+    <meta name="twitter:image" content="https://cdn.hscstack.site/images/og_resultrank.png" />
+    <meta name="twitter:image:alt" content="ResultRank by HSCStack" />
 
-  <div class="ambient-bg" aria-hidden="true">
-    <div class="ambient-blob ambient-blob--1"></div>
-    <div class="ambient-blob ambient-blob--2"></div>
-    <div class="ambient-blob ambient-blob--3"></div>
-  </div>
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link rel="apple-touch-icon" href="images/favicon.png" />
 
-  <!-- Top Announcement / Alert Banner -->
-  <aside class="alert-bar" role="alert" aria-label="Announcement">
-    <div class="alert-bar__inner">
-      <div class="alert-bar__badge">
-        <span class="alert-bar__pulse" aria-hidden="true"></span>
-        <svg class="alert-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-          <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-        </svg>
-        <span>Alert</span>
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "ResultRank",
+        "alternateName": "ResultRank by HSCStack",
+        "url": "https://hscstack.site",
+        "description": "Bangladesh Education Boards Result Leaderboards, Institution Analytics & GPA Statistics",
+        "publisher": {
+          "@type": "Organization",
+          "name": "HSCStack",
+          "url": "https://hscstack.site",
+          "logo": "https://cdn.hscstack.site/images/og_resultrank.png"
+        },
+        "inLanguage": ["en", "bn"]
+      }
+    </script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
+              bengali: ['"Hind Siliguri"', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- FontAwesome for Social Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      body {
+        font-family: "Plus Jakarta Sans", Inter, -apple-system, sans-serif;
+      }
+      .font-bengali {
+        font-family: "Hind Siliguri", sans-serif;
+      }
+
+      /* Smooth Card Entrance Animation */
+      @keyframes cardFadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .board-card-animate {
+        animation: cardFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+    </style>
+  </head>
+
+  <body
+    class="bg-slate-50 text-slate-900 flex flex-col min-h-screen font-sans antialiased selection:bg-indigo-500 selection:text-white"
+  >
+    <!-- Header -->
+    <header
+      class="bg-white/85 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 transition-all duration-200"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between"
+      >
+        <a href="/" class="flex items-center gap-3 group transition-transform active:scale-95 duration-150">
+          <img
+            src="images/favicon.png"
+            alt="Logo"
+            class="h-8 w-8 object-contain"
+          />
+          <span class="text-xl font-black tracking-tight text-slate-900"
+            >Result<span class="text-indigo-600">Rank</span></span
+          >
+        </a>
+
+        <a
+          href="https://hscstack.site"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-xs sm:text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-all duration-200 flex items-center gap-1.5 bg-slate-100 hover:bg-indigo-50 border border-slate-200 hover:border-indigo-200 px-3.5 py-1.5 rounded-full hover:shadow-sm active:scale-95"
+        >
+          <span>Powered by HSCStack</span>
+          <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+        </a>
       </div>
-      <p class="alert-bar__message">
-        <span class="alert-bar__highlight">শুধু SSC ২০২৬-ই নয়</span>, এখন থেকে সকল বোর্ড রেজাল্টের লিডারবোর্ডই পাওয়া যাবে, তাই সেভ করে রাখুন!
-      </p>
-      <button type="button" class="alert-bar__save-btn" id="save-site-btn" aria-label="Save this page">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
-        </svg>
-        <span>সেভ করুন</span>
-      </button>
-    </div>
-  </aside>
+    </header>
 
-  <nav class="nav" aria-label="Main navigation">
-    <div class="nav__inner">
-      <a href="/" class="nav__brand" aria-label="ResultStack Home">
-        <div class="nav__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-          </svg>
+    <main class="flex-grow">
+      <!-- Portal Hero -->
+      <section class="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-900 relative overflow-hidden pb-28 pt-16 sm:pb-32 sm:pt-20 border-b border-slate-800/40">
+        <div class="absolute inset-0 pointer-events-none">
+          <div
+            class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-indigo-500/15 to-transparent blur-3xl"
+          ></div>
+          <div
+            class="absolute bottom-0 left-0 w-1/2 h-full bg-gradient-to-tr from-cyan-500/10 to-transparent blur-3xl"
+          ></div>
         </div>
-        <span class="nav__title">Result<span>Stack</span></span>
-      </a>
-      <div class="nav__right">
-        <span class="nav__badge" aria-label="Coming Soon">Coming Soon</span>
-        <button class="theme-toggle" aria-label="Toggle dark mode" type="button">
-          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        </button>
+
+        <div
+          class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center"
+        >
+          <h1
+            class="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-white mb-5 leading-tight"
+          >
+            The Ultimate Result Leaderboard
+          </h1>
+
+          <p
+            class="text-base sm:text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal font-bengali"
+          >
+            বাংলাদেশের সকল শিক্ষা বোর্ডের মেধা তালিকা, সেরা প্রতিষ্ঠান ও
+            বিস্তারিত GPA পরিসংখ্যান বিশ্লেষণ করুন একটি সমন্বিত প্ল্যাটফর্মে।
+          </p>
+        </div>
+      </section>
+
+      <!-- Floating Filter Bar -->
+      <section
+        class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12 sm:-mt-14 relative z-20 mb-12"
+      >
+        <div
+          class="bg-white rounded-2xl shadow-xl shadow-slate-900/5 border border-slate-200/90 p-5 sm:p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-slate-900/10"
+        >
+          <div class="flex flex-col md:flex-row gap-4">
+            <!-- Board Selector -->
+            <div class="flex-1">
+              <label
+                for="boardFilter"
+                class="block text-xs font-bold text-slate-500 mb-1.5 uppercase tracking-wider"
+                >Select Board</label
+              >
+              <div class="relative">
+                <select
+                  id="boardFilter"
+                  class="w-full appearance-none bg-slate-50 border border-slate-200 text-slate-900 text-sm sm:text-base font-semibold rounded-xl focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 block p-3 pr-9 outline-none transition-all duration-200 cursor-pointer hover:bg-slate-100/80"
+                >
+                  <option value="all">All Boards</option>
+                  <option value="Dhaka">Dhaka Board</option>
+                  <option value="Dinajpur">Dinajpur Board</option>
+                  <option value="Rajshahi">Rajshahi Board</option>
+                  <option value="Cumilla">Cumilla Board</option>
+                  <option value="Chattogram">Chattogram Board</option>
+                  <option value="Sylhet">Sylhet Board</option>
+                  <option value="Barishal">Barishal Board</option>
+                  <option value="Jashore">Jashore Board</option>
+                  <option value="Mymensingh">Mymensingh Board</option>
+                  <option value="Madrasah">Madrasah Board</option>
+                  <option value="Technical">Technical Board</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-400">
+                  <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Exam Selector -->
+            <div class="flex-1">
+              <label
+                for="examFilter"
+                class="block text-xs font-bold text-slate-500 mb-1.5 uppercase tracking-wider"
+                >Select Exam</label
+              >
+              <div class="relative">
+                <select
+                  id="examFilter"
+                  class="w-full appearance-none bg-slate-50 border border-slate-200 text-slate-900 text-sm sm:text-base font-semibold rounded-xl focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 block p-3 pr-9 outline-none transition-all duration-200 cursor-pointer hover:bg-slate-100/80"
+                >
+                  <option value="all">All Exams (SSC & HSC)</option>
+                  <option value="ssc">SSC Examination</option>
+                  <option value="hsc">HSC Examination</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-400">
+                  <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Year Selector -->
+            <div class="flex-1">
+              <label
+                for="yearFilter"
+                class="block text-xs font-bold text-slate-500 mb-1.5 uppercase tracking-wider"
+                >Select Year</label
+              >
+              <div class="relative">
+                <select
+                  id="yearFilter"
+                  class="w-full appearance-none bg-slate-50 border border-slate-200 text-slate-900 text-sm sm:text-base font-semibold rounded-xl focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 block p-3 pr-9 outline-none transition-all duration-200 cursor-pointer hover:bg-slate-100/80"
+                >
+                  <option value="all">All Years</option>
+                  <option value="2026">2026</option>
+                  <option value="2025">2025</option>
+                  <option value="2024">2024</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-400">
+                  <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Boards Grid Section -->
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <div
+          id="boardsGrid"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-300"
+        >
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- View More Button Container -->
+        <div id="viewMoreContainer" class="mt-10 text-center hidden transition-all duration-300">
+          <button
+            id="viewMoreBtn"
+            class="inline-flex items-center gap-2 bg-white hover:bg-slate-50 text-slate-700 hover:text-indigo-600 font-bold text-sm px-6 py-3 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all duration-200 active:scale-95"
+          >
+            <span id="viewMoreText">View More Boards</span>
+            <i data-lucide="chevron-down" id="viewMoreIcon" class="w-4 h-4 transition-transform duration-300"></i>
+          </button>
+        </div>
+
+        <div
+          id="noResults"
+          class="hidden text-center py-16 bg-white rounded-2xl border border-slate-200 border-dashed board-card-animate"
+        >
+          <div
+            class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-slate-50 text-slate-400 mb-3"
+          >
+            <i data-lucide="search-x" class="w-7 h-7"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-1">
+            No leaderboards found
+          </h3>
+          <p class="text-sm text-slate-500 font-medium">
+            Try adjusting your exam or year filters.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer (Preserved full original skeleton) -->
+    <footer
+      class="bg-slate-900 border-t border-slate-800 pt-16 pb-8 mt-auto text-slate-300"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          class="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-8 mb-12 border-b border-slate-800 pb-12"
+        >
+          <div class="col-span-1 md:col-span-5">
+            <div class="flex items-center gap-3 mb-6">
+              <img
+                src="images/favicon.png"
+                alt="Logo"
+                class="h-8 w-8 object-contain"
+              />
+              <span class="text-2xl font-black tracking-tight text-white"
+                >Result<span class="text-indigo-500">Rank</span></span
+              >
+            </div>
+            <p class="text-slate-400 mb-6 max-w-sm text-sm leading-relaxed">
+              Empowering the next generation of students with high quality,
+              direct, and accessible academic resources.
+            </p>
+            <div class="flex gap-4">
+              <a
+                href="https://github.com/hscstack"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700/60 flex items-center justify-center text-slate-400 hover:bg-indigo-600 hover:text-white hover:border-indigo-500 transition-all duration-200 active:scale-95"
+                aria-label="GitHub"
+              >
+                <i class="fab fa-github text-lg"></i>
+              </a>
+              <a
+                href="https://facebook.com/hscstackbd"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700/60 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white hover:border-blue-500 transition-all duration-200 active:scale-95"
+                aria-label="Facebook"
+              >
+                <i class="fab fa-facebook-f text-lg"></i>
+              </a>
+              <a
+                href="https://instagram.com/hscstack"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700/60 flex items-center justify-center text-slate-400 hover:bg-pink-600 hover:text-white hover:border-pink-500 transition-all duration-200 active:scale-95"
+                aria-label="Instagram"
+              >
+                <i class="fab fa-instagram text-lg"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-span-1 md:col-span-4">
+            <h4
+              class="text-white font-bold mb-6 tracking-wide uppercase text-sm"
+            >
+              Platform
+            </h4>
+            <ul class="space-y-4 text-sm font-medium">
+              <li>
+                <a
+                  href="https://hscstack.site"
+                  class="text-slate-400 hover:text-indigo-400 transition-colors flex items-center gap-2"
+                  ><i data-lucide="layout-dashboard" class="w-4 h-4"></i> Main
+                  Platform</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://hscstack.site/about-us"
+                  class="text-slate-400 hover:text-indigo-400 transition-colors flex items-center gap-2"
+                  ><i data-lucide="users" class="w-4 h-4"></i> Our
+                  Contributors</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://hscstack.site/join"
+                  class="text-slate-400 hover:text-indigo-400 transition-colors flex items-center gap-2"
+                  ><i data-lucide="user-plus" class="w-4 h-4"></i> Join Our
+                  Team</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://hscstack.site/support"
+                  class="text-slate-400 hover:text-indigo-400 transition-colors flex items-center gap-2"
+                  ><i data-lucide="heart" class="w-4 h-4"></i> Support
+                  HSCStack</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://hscstack.site/projects"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-slate-400 hover:text-indigo-400 transition-colors flex items-center gap-2"
+                  ><i data-lucide="external-link" class="w-4 h-4"></i> More From
+                  Us</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-span-1 md:col-span-3">
+            <h4
+              class="text-white font-bold mb-6 tracking-wide uppercase text-sm"
+            >
+              Legal
+            </h4>
+            <ul class="space-y-4 text-sm font-medium">
+              <li>
+                <a
+                  href="https://hscstack.site/privacy-policy"
+                  class="text-slate-400 hover:text-indigo-400 transition-colors"
+                  >Privacy Policy</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://hscstack.site/terms-service"
+                  class="text-slate-400 hover:text-indigo-400 transition-colors"
+                  >Terms of Service</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-slate-500"
+        >
+          <p>
+            A concern of
+            <a
+              href="https://hscstack.site"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-slate-400 hover:text-white transition-colors underline decoration-slate-700 underline-offset-4"
+              >HSCStack</a
+            >
+          </p>
+          <p>&copy; 2026 HSCStack. Built for the future of learning.</p>
+        </div>
       </div>
-    </div>
-  </nav>
+    </footer>
 
-  <main>
-    <section class="hero" aria-labelledby="hero-heading">
-      <div class="container">
-
-        <div class="fade-up">
-          <span class="hero__eyebrow">
-            <span class="hero__eyebrow-dot" aria-hidden="true"></span>
-            New from HSCStack
-          </span>
-        </div>
-
-        <div class="hero__brand fade-up fade-up-d1">
-          <div class="hero__brand-name">ResultStack</div>
-          <div class="hero__brand-org">by HSCStack</div>
-        </div>
-
-        <h1 id="hero-heading" class="hero__heading fade-up fade-up-d2">
-          Bangladesh's Student Leaderboard, Reimagined.
-        </h1>
-
-        <p class="hero__subheading fade-up fade-up-d3">
-          SSC &amp; HSC results. Rankings. Recognition. All in one place.
-        </p>
-
-        <div class="hero__alert fade-up fade-up-d4" role="alert">
-          <div class="hero__alert-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="12" y1="8" x2="12" y2="12"></line>
-              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+    <!-- Welcome Modal -->
+    <div
+      id="welcome-modal"
+      class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 pointer-events-none transition-all duration-300 hidden p-4"
+    >
+      <div
+        class="bg-white rounded-3xl w-full max-w-md shadow-2xl transform translate-y-8 transition-all duration-300 overflow-hidden scale-95 flex flex-col p-6 border border-slate-100"
+        id="welcome-modal-inner"
+      >
+        <div class="flex items-center gap-3 mb-4">
+          <div
+            class="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 border border-indigo-100 text-indigo-600 shrink-0"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+              ></path>
+              <line x1="12" y1="9" x2="12" y2="13"></line>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
             </svg>
           </div>
-          <div class="hero__alert-content">
-            <span class="hero__alert-title">জরুরি নোটিশ:</span>
-            শুধু SSC ২০২৬-ই নয়, এখন থেকে সকল বোর্ড রেজাল্টের লিডারবোর্ডই পাওয়া যাবে, তাই সেভ করে রাখুন!
-          </div>
+          <h3 class="text-xl font-black text-slate-900 leading-tight">
+            স্বাগতম!
+          </h3>
         </div>
 
-        <div class="hero__cta-row fade-up fade-up-d5">
-          <span class="btn btn--primary">Coming Soon</span>
-          <a href="https://hscstack.mvp.bd?utm_source=resultstack" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
-            Visit HSCStack
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-          </a>
+        <div
+          class="text-slate-600 mb-6 font-medium space-y-3 text-sm sm:text-base leading-relaxed font-bengali"
+        >
+          <p>
+            আমাদের পূর্বের <strong>দিনাজপুর বোর্ড SSC 2026 লিডারবোর্ড</strong> প্রজেক্টটি এখন সরাসরি <strong>ResultRank</strong>-এ স্থানান্তরিত করা হয়েছে। আগের ডেটা দেখতে বোর্ড অপশন থেকে কেবল <strong>"দিনাজপুর বোর্ড"</strong> সিলেক্ট করুন।
+          </p>
+          <p>
+            শুধু SSC 2026-ই নয়, এখন থেকে সকল বোর্ড রেজাল্টের লিডারবোর্ডই পাওয়া যাবে, তাই সেভ করে রাখুন।
+          </p>
+          <p>
+            বর্তমানে বাকি বোর্ডগুলোর ডেটা যুক্ত করার কাজ চলছে এবং আপনাদের ফিডব্যাকের ওপর ভিত্তি করে তা দ্রুত আপডেট করা হবে!
+          </p>
+          <p class="font-bold text-slate-800 font-sans pt-1">
+            Regards,<br />
+            <a
+              href="https://hscstack.site"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-indigo-600 hover:text-indigo-700 hover:underline transition-colors"
+              >Team HSCStack</a
+            >
+          </p>
         </div>
 
-        <p class="hero__description fade-up fade-up-d6">
-          ResultStack will provide student leaderboards based on public examination results, helping students explore rankings by marks, GPA, school, region, and examination year across Bangladesh.
-        </p>
-
-        <p class="hero__bengali fade-up fade-up-d6">
-          ফলাফল শুধু একটি সংখ্যা নয় — এটি একটি গল্প।
-        </p>
-
-      </div>
-    </section>
-
-    <section class="features" aria-labelledby="features-heading">
-      <div class="container">
-        <p class="section-label fade-up">What's Coming</p>
-        <h2 id="features-heading" class="section-title fade-up fade-up-d1">Everything you need in one place</h2>
-        <p class="section-desc fade-up fade-up-d2">Explore rankings, compare results, and discover student achievements across examinations, years, and regions.</p>
-
-        <div class="features__grid">
-          <div class="feature-card fade-up fade-up-d1">
-            <div class="feature-card__icon feature-card__icon--indigo">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            </div>
-            <h3 class="feature-card__title">Student Rankings</h3>
-            <p class="feature-card__text">Comprehensive leaderboards ranked by GPA and total marks across examinations.</p>
-          </div>
-          <div class="feature-card fade-up fade-up-d2">
-            <div class="feature-card__icon feature-card__icon--emerald">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
-            </div>
-            <h3 class="feature-card__title">GPA &amp; Marks</h3>
-            <p class="feature-card__text">Filter and sort by GPA, total marks, or individual subject scores.</p>
-          </div>
-          <div class="feature-card fade-up fade-up-d3">
-            <div class="feature-card__icon feature-card__icon--amber">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            <h3 class="feature-card__title">Region &amp; School</h3>
-            <p class="feature-card__text">Explore results by education board, district, and individual schools.</p>
-          </div>
-          <div class="feature-card fade-up fade-up-d4">
-            <div class="feature-card__icon feature-card__icon--violet">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-            </div>
-            <h3 class="feature-card__title">SSC &amp; HSC</h3>
-            <p class="feature-card__text">Supporting both SSC and HSC examinations across multiple years.</p>
-          </div>
+        <div class="flex flex-col gap-3 font-bengali">
+          <button
+            id="welcome-close"
+            class="w-full py-3.5 bg-indigo-600 text-white font-bold rounded-xl shadow-md shadow-indigo-500/20 hover:bg-indigo-700 active:scale-[0.98] transition-all"
+          >
+            বুঝতে পেরেছি
+          </button>
         </div>
       </div>
-    </section>
-
-    <section class="preview" aria-label="Leaderboard preview">
-      <div class="container">
-        <p class="section-label fade-up">Preview</p>
-        <h2 class="section-title fade-up fade-up-d1">See how it looks</h2>
-        <p class="section-desc fade-up fade-up-d2">A glimpse of what student leaderboards will look like on ResultStack.</p>
-
-        <div class="preview__wrapper fade-up fade-up-d3">
-          <div class="preview__header">
-            <span class="preview__title">Top Students</span>
-            <span class="preview__tag">Sample Preview</span>
-          </div>
-
-          <div class="preview__table-wrapper">
-            <table class="preview__table" role="table">
-              <thead>
-                <tr>
-                  <th scope="col">Rank</th>
-                  <th scope="col">Student</th>
-                  <th scope="col">GPA</th>
-                  <th scope="col">Marks</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><span class="rank-badge rank-badge--gold">1</span></td>
-                  <td>
-                    <div class="student-name">MD. ABDULLAH ALL NAJAT</div>
-                    <div class="student-school">RZS</div>
-                  </td>
-                  <td><span class="gpa-badge">5.00</span></td>
-                  <td><span class="marks-value">1058</span></td>
-                </tr>
-                <tr>
-                  <td><span class="rank-badge rank-badge--gold">2</span></td>
-                  <td>
-                    <div class="student-name">MD NAIMUR RAHMAN</div>
-                    <div class="student-school">RZS</div>
-                  </td>
-                  <td><span class="gpa-badge">5.00</span></td>
-                  <td><span class="marks-value">1057</span></td>
-                </tr>
-                <tr>
-                  <td><span class="rank-badge rank-badge--gold">3</span></td>
-                  <td>
-                    <div class="student-name">M. M. FAHIM MORSHED RUHAN</div>
-                    <div class="student-school">PLSCR</div>
-                  </td>
-                  <td><span class="gpa-badge">5.00</span></td>
-                  <td><span class="marks-value">1056</span></td>
-                </tr>
-                <tr>
-                  <td><span class="rank-badge rank-badge--indigo">4</span></td>
-                  <td>
-                    <div class="student-name">MD. AHNAF SINHA SAIKAT</div>
-                    <div class="student-school">RZS</div>
-                  </td>
-                  <td><span class="gpa-badge">5.00</span></td>
-                  <td><span class="marks-value">1055</span></td>
-                </tr>
-                <tr>
-                  <td><span class="rank-badge rank-badge--indigo">5</span></td>
-                  <td>
-                    <div class="student-name">S M MAHIB FAIYAZ</div>
-                    <div class="student-school">RZS</div>
-                  </td>
-                  <td><span class="gpa-badge">5.00</span></td>
-                  <td><span class="marks-value">1055</span></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="preview__cards" role="list">
-            <div class="preview__card-item" role="listitem">
-              <div class="card-top">
-                <span class="rank-badge rank-badge--gold">1</span>
-                <span class="gpa-badge">5.00</span>
-              </div>
-              <div class="card-info">
-                <div class="card-name">MD. ABDULLAH ALL NAJAT</div>
-                <div class="card-school">RZS</div>
-              </div>
-              <div class="card-bottom">
-                <div class="card-stat">
-                  <div class="card-stat__label">GPA</div>
-                  <div class="card-stat__value card-stat__value--gpa">5.00</div>
-                </div>
-                <div class="card-stat">
-                  <div class="card-stat__label">Marks</div>
-                  <div class="card-stat__value card-stat__value--marks">1058</div>
-                </div>
-              </div>
-            </div>
-            <div class="preview__card-item" role="listitem">
-              <div class="card-top">
-                <span class="rank-badge rank-badge--gold">2</span>
-                <span class="gpa-badge">5.00</span>
-              </div>
-              <div class="card-info">
-                <div class="card-name">MD NAIMUR RAHMAN</div>
-                <div class="card-school">RZS</div>
-              </div>
-              <div class="card-bottom">
-                <div class="card-stat">
-                  <div class="card-stat__label">GPA</div>
-                  <div class="card-stat__value card-stat__value--gpa">5.00</div>
-                </div>
-                <div class="card-stat">
-                  <div class="card-stat__label">Marks</div>
-                  <div class="card-stat__value card-stat__value--marks">1057</div>
-                </div>
-              </div>
-            </div>
-            <div class="preview__card-item" role="listitem">
-              <div class="card-top">
-                <span class="rank-badge rank-badge--gold">3</span>
-                <span class="gpa-badge">5.00</span>
-              </div>
-              <div class="card-info">
-                <div class="card-name">M. M. FAHIM MORSHED RUHAN</div>
-                <div class="card-school">PLSCR</div>
-              </div>
-              <div class="card-bottom">
-                <div class="card-stat">
-                  <div class="card-stat__label">GPA</div>
-                  <div class="card-stat__value card-stat__value--gpa">5.00</div>
-                </div>
-                <div class="card-stat">
-                  <div class="card-stat__label">Marks</div>
-                  <div class="card-stat__value card-stat__value--marks">1056</div>
-                </div>
-              </div>
-            </div>
-            <div class="preview__card-item" role="listitem">
-              <div class="card-top">
-                <span class="rank-badge rank-badge--indigo">4</span>
-                <span class="gpa-badge">5.00</span>
-              </div>
-              <div class="card-info">
-                <div class="card-name">MD. AHNAF SINHA SAIKAT</div>
-                <div class="card-school">RZS</div>
-              </div>
-              <div class="card-bottom">
-                <div class="card-stat">
-                  <div class="card-stat__label">GPA</div>
-                  <div class="card-stat__value card-stat__value--gpa">5.00</div>
-                </div>
-                <div class="card-stat">
-                  <div class="card-stat__label">Marks</div>
-                  <div class="card-stat__value card-stat__value--marks">1055</div>
-                </div>
-              </div>
-            </div>
-            <div class="preview__card-item" role="listitem">
-              <div class="card-top">
-                <span class="rank-badge rank-badge--indigo">5</span>
-                <span class="gpa-badge">5.00</span>
-              </div>
-              <div class="card-info">
-                <div class="card-name">S M MAHIB FAIYAZ</div>
-                <div class="card-school">RZS</div>
-              </div>
-              <div class="card-bottom">
-                <div class="card-stat">
-                  <div class="card-stat__label">GPA</div>
-                  <div class="card-stat__value card-stat__value--gpa">5.00</div>
-                </div>
-                <div class="card-stat">
-                  <div class="card-stat__label">Marks</div>
-                  <div class="card-stat__value card-stat__value--marks">1055</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <section class="bengali-section" aria-label="Bengali message">
-      <div class="container">
-        <div class="bengali-card fade-up">
-          <div class="bengali-card__glow" aria-hidden="true"></div>
-          <p class="bengali-card__primary">ফলাফল শুধু একটি সংখ্যা নয় — এটি একটি গল্প।</p>
-          <p class="bengali-card__secondary">শুধু SSC ২০২৬ নয়, এখন থেকে সকল শিক্ষা বোর্ডের রেজাল্টের লিডারবোর্ড নিয়ে আসছে ResultStack।</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="hscstack" aria-label="HSCStack branding">
-      <div class="container">
-        <div class="hscstack__card fade-up">
-          <p class="hscstack__label">Powered by</p>
-          <a href="https://hscstack.mvp.bd?utm_source=resultstack" target="_blank" rel="noopener noreferrer" class="hscstack__link">
-            HSCStack
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M7 17L17 7M17 7H7M17 7v10"/>
-            </svg>
-          </a>
-          <p class="hscstack__desc">A community-driven, open-source platform built for students in Bangladesh.</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer__inner">
-      <p class="footer__brand">ResultStack</p>
-      <div class="footer__meta">
-        <span class="footer__meta-item">Powered by HSCStack</span>
-        <span class="footer__meta-dot" aria-hidden="true"></span>
-        <span class="footer__meta-item">Open Source</span>
-        <span class="footer__meta-dot" aria-hidden="true"></span>
-        <span class="footer__meta-item">Coming Soon</span>
-      </div>
-      <p class="footer__heart">Built with ❤️ for students of Bangladesh.</p>
     </div>
-  </footer>
 
-  <div id="save-toast" class="alert-bar__toast" role="status" aria-live="polite">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M20 6L9 17l-5-5"/>
-    </svg>
-    <span>লিংক কপি হয়েছে! বুকমার্ক করতে Ctrl + D চাপুন।</span>
-  </div>
-
-  <script src="script.js"></script>
-</body>
+    <script src="landing.js"></script>
+    <script>
+      window.va =
+        window.va ||
+        function () {
+          (window.vaq = window.vaq || []).push(arguments);
+        };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </body>
 </html>
