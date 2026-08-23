@@ -1,0 +1,101 @@
+[
+  {
+    "id": "dinajpur-ssc-2026",
+    "name": "Dinajpur Board",
+    "exam": "ssc",
+    "year": "2026",
+    "url": "index.html",
+    "status": "available",
+    "icon": "🏛️"
+  },
+  {
+    "id": "dhaka-ssc-2026",
+    "name": "Dhaka Board",
+    "exam": "ssc",
+    "year": "2026",
+    "url": "#",
+    "status": "coming_soon",
+    "icon": "🏛️"
+  },
+  {
+    "id": "rajshahi-ssc-2026",
+    "name": "Rajshahi Board",
+    "exam": "ssc",
+    "year": "2026",
+    "url": "#",
+    "status": "coming_soon",
+    "icon": "🏛️"
+  },
+  {
+    "id": "cumilla-ssc-2026",
+    "name": "Cumilla Board",
+    "exam": "ssc",
+    "year": "2026",
+    "url": "#",
+    "status": "coming_soon",
+    "icon": "🏛️"
+  },
+  {
+    "id": "jashore-ssc-2026",
+    "name": "Jashore Board",
+    "exam": "ssc",
+    "year": "2026",
+    "url": "#",
+    "status": "coming_soon",
+    "icon": "🏛️"
+  },
+  {
+    "id": "chattogram-ssc-2026",
+    "name": "Chattogram Board",
+    "exam": "ssc",
+    "year": "2026",
+    "url": "#",
+    "status": "coming_soon",
+    "icon": "🏛️"
+  },
+  {
+    "id": "barishal-ssc-2026",
+    "name": "Barishal Board",
+    "exam": "ssc",
+    "year": "2026",
+    "url": "#",
+    "status": "coming_soon",
+    "icon": "🏛️"
+  },
+  {
+    "id": "sylhet-ssc-2026",
+    "name": "Sylhet Board",
+    "exam": "ssc",
+    "year": "2026",
+    "url": "#",
+    "status": "coming_soon",
+    "icon": "🏛️"
+  },
+  {
+    "id": "mymensingh-ssc-2026",
+    "name": "Mymensingh Board",
+    "exam": "ssc",
+    "year": "2026",
+    "url": "#",
+    "status": "coming_soon",
+    "icon": "🏛️"
+  },
+  {
+    "id": "dinajpur-ssc-2025",
+    "name": "Dinajpur Board",
+    "exam": "ssc",
+    "year": "2025",
+    "url": "#",
+    "status": "coming_soon",
+    "icon": "🏛️"
+  },
+  {
+    "id": "dinajpur-hsc-2026",
+    "name": "Dinajpur Board",
+    "exam": "hsc",
+    "year": "2026",
+    "url": "#",
+    "status": "coming_soon",
+    "icon": "🏛️"
+  }
+]
