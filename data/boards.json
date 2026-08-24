@@ -9,6 +9,17 @@
     "status": "available",
     "icon": "landmark"
   },
+  
+    {
+    "id": "chattogram-ssc-2026",
+    "name": "Chattogram Board",
+    "name_bn": "চট্টগ্রাম শিক্ষা বোর্ড",
+    "exam": "ssc",
+    "year": "2026",
+    "url": "https://ssc26-chattogram.hscstack.site/",
+    "status": "available",
+    "icon": "landmark"
+  },
   {
     "id": "dhaka-ssc-2026",
     "name": "Dhaka Board",
@@ -49,16 +60,7 @@
     "status": "coming_soon",
     "icon": "landmark"
   },
-  {
-    "id": "chattogram-ssc-2026",
-    "name": "Chattogram Board",
-    "name_bn": "চট্টগ্রাম শিক্ষা বোর্ড",
-    "exam": "ssc",
-    "year": "2026",
-    "url": "https://ssc26-chattogram.hscstack.site/",
-    "status": "available",
-    "icon": "landmark"
-  },
+
   {
     "id": "barishal-ssc-2026",
     "name": "Barishal Board",
