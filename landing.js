@@ -15,63 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const viewMoreBtn = document.getElementById('viewMoreBtn');
     const viewMoreText = document.getElementById('viewMoreText');
     const viewMoreIcon = document.getElementById('viewMoreIcon');
-    const welcomeModal = document.getElementById('welcome-modal');
-    const welcomeModalInner = document.getElementById('welcome-modal-inner');
-    const welcomeClose = document.getElementById('welcome-close');
-    
     let isExpanded = false;
     let boardsData = [];
-
-    // Helper to get limit: 3 for phones (<640px), 6 for tablet/desktop
-    const getInitialLimit = () => (window.innerWidth < 640 ? 3 : 6);
-
-    // Welcome Modal open/close logic
-    function openWelcomeModal() {
-        if (!welcomeModal || !welcomeModalInner) return;
-        welcomeModal.classList.remove('hidden');
-        setTimeout(() => {
-            welcomeModal.classList.add('opacity-100');
-            welcomeModal.classList.remove('opacity-0', 'pointer-events-none');
-            welcomeModalInner.classList.remove('scale-95', 'translate-y-8');
-            welcomeModalInner.classList.add('scale-100', 'translate-y-0');
-        }, 10);
-    }
-
-    function closeWelcomeModal() {
-        if (!welcomeModal || !welcomeModalInner) return;
-        welcomeModal.classList.remove('opacity-100');
-        welcomeModal.classList.add('opacity-0', 'pointer-events-none');
-        welcomeModalInner.classList.add('scale-95', 'translate-y-8');
-        welcomeModalInner.classList.remove('scale-100', 'translate-y-0');
-        sessionStorage.setItem('welcome_seen', 'true');
-        
-        setTimeout(() => {
-            welcomeModal.classList.add('hidden');
-        }, 300);
-    }
-
-    if (welcomeClose) {
-        welcomeClose.addEventListener('click', closeWelcomeModal);
-    }
-
-    if (welcomeModal) {
-        welcomeModal.addEventListener('click', (e) => {
-            if (e.target === welcomeModal) {
-                closeWelcomeModal();
-            }
-        });
-    }
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && welcomeModal && !welcomeModal.classList.contains('hidden')) {
-            closeWelcomeModal();
-        }
-    });
-
-    // Show welcome modal once per session
-    if (!sessionStorage.getItem('welcome_seen')) {
-        setTimeout(openWelcomeModal, 400);
-    }
 
     // Fetch boards data
     fetch('data/boards.json')
