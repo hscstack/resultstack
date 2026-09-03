@@ -467,7 +467,76 @@
       </div>
     </footer>
 
+    <!-- Welcome Modal -->
+    <div
+      id="welcome-modal"
+      class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 pointer-events-none transition-all duration-300 hidden p-4"
+    >
+      <div
+        class="bg-white rounded-3xl w-full max-w-md shadow-2xl transform translate-y-8 transition-all duration-300 overflow-hidden scale-95 flex flex-col p-6 border border-slate-100"
+        id="welcome-modal-inner"
+      >
+        <div class="flex items-center gap-3 mb-4">
+          <div
+            class="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 border border-indigo-100 text-indigo-600 shrink-0"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+              ></path>
+              <line x1="12" y1="9" x2="12" y2="13"></line>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+          </div>
+          <h3 class="text-xl font-black text-slate-900 leading-tight">
+            স্বাগতম!
+          </h3>
+        </div>
 
+        <div
+          class="text-slate-600 mb-6 font-medium space-y-3 text-sm sm:text-base leading-relaxed font-bengali"
+        >
+          <p>
+            আমাদের পূর্বের <strong>দিনাজপুর বোর্ড SSC 2026 লিডারবোর্ড</strong> প্রজেক্টটি এখন সরাসরি <strong>ResultStack</strong>-এ স্থানান্তরিত করা হয়েছে। আগের ডেটা দেখতে বোর্ড অপশন থেকে কেবল <strong>"দিনাজপুর বোর্ড"</strong> সিলেক্ট করুন।
+          </p>
+          <p>
+            শুধু SSC 2026-ই নয়, এখন থেকে সকল বোর্ড রেজাল্টের লিডারবোর্ডই পাওয়া যাবে, তাই সেভ করে রাখুন।
+          </p>
+          <p>
+            বর্তমানে বাকি বোর্ডগুলোর ডেটা যুক্ত করার কাজ চলছে এবং আপনাদের ফিডব্যাকের ওপর ভিত্তি করে তা দ্রুত আপডেট করা হবে!
+          </p>
+          <p class="font-bold text-slate-800 font-sans pt-1">
+            Regards,<br />
+            <a
+              href="https://hscstack.site"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-indigo-600 hover:text-indigo-700 hover:underline transition-colors"
+              >Team HSCStack</a
+            >
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-3 font-bengali">
+          <button
+            id="welcome-close"
+            class="w-full py-3.5 bg-indigo-600 text-white font-bold rounded-xl shadow-md shadow-indigo-500/20 hover:bg-indigo-700 active:scale-[0.98] transition-all"
+          >
+            বুঝতে পেরেছি
+          </button>
+        </div>
+      </div>
+    </div>
 
     <script src="landing.js"></script>
     <script>
