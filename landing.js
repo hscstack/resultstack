@@ -68,10 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Show welcome modal once per session
-    if (!sessionStorage.getItem('welcome_seen')) {
-        setTimeout(openWelcomeModal, 400);
-    }
+    // Welcome modal disabled: mark as seen so it never triggers
+    sessionStorage.setItem('welcome_seen', 'true');
 
     // Fetch boards data
     fetch('data/boards.json')
